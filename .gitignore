@@ -1,0 +1,33 @@
+# Ansible
+*.retry
+*.vault
+.vault_pass
+.vault_password
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Secrets
+secrets.yml
+*vault*.yml
+group_vars/**/vault.yml
+hosts/vault/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

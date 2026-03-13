@@ -1,0 +1,5 @@
+# сеть для контейнеров отдельно чтоб без конфликта с внешней
+- name: Create Docker network
+  community.docker.docker_network:
+    name: dev_net
+    state: present
