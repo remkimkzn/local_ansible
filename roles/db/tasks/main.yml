@@ -1,0 +1,12 @@
+- name: Run PostgreSQL container
+  community.docker.docker_container:
+    name: postgres
+    image: postgres:15
+    state: started
+    restart_policy: unless-stopped
+    env:
+      POSTGRES_PASSWORD: "{{ db_password }}"
+    networks:
+      - name: dev_net
+    volumes:
+      - pgdata:/var/lib/postgresql/data

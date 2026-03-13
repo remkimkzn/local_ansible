@@ -1,35 +1,22 @@
-# Local DevOps Stack (Ansible)
+# 🌐 Local DevOps Project with Ansible & Docker
 
-Небольшой учебный проект для практики **Linux, сетей, Docker и Ansible**.  
-Проект создаёт локальную инфраструктуру и управляет сервисами через Ansible.
+Автоматизация локальной микросервисной инфраструктуры через **Ansible** и **Docker**: Flask, PostgreSQL, Nginx.
 
-## Цель
+## 📦 Сервисы
+- **Nginx** — reverse proxy (порт 80)  
+- **Flask** — Python веб-приложение  
+- **PostgreSQL** — база данных  
 
-Изучить:
+## 🚀 Быстрый старт
+```bash
+cd local-ansible
 
-- управление системой через Ansible
-- контейнеризацию с Docker
-- сетевое взаимодействие сервисов
-- структуру DevOps проекта уровня 
+# Собрать Docker образ Flask
+cd app
+docker build -t my_flask_image:latest .
+cd ..
 
-## Что сделано
-
-1. Подготовлено окружение Linux
-2. Установлены:
-   - Ansible
-   - Docker
-3. Настроен запуск Docker без `sudo`
-4. Создана структура Ansible проекта
-5. Настроен **inventory** для локального хоста
-6. Добавлены **group_vars** для переменных проекта
-7. Созданы базовые **roles**:
-   - docker — установка и запуск Docker
-   - network — создание docker сети
-   - db — будущая роль базы данных
-   - app — роль приложения
-   - nginx — роль веб-сервера
-8. Подготовлен основной playbook `site.yml`
-
-## Проверка работы
-ansible-inventory -i inventories/dev/hosts.yml --list
-ansible all -i inventories/dev/hosts.yml -m ping
+# Запустить инфраструктуру
+ansible-playbook playbooks/site.yml
+docker ps — контейнеры: postgres, flask_app, nginx
+curl http://localhost — ответ Flask приложения
